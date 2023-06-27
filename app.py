@@ -1,4 +1,4 @@
-from flask import Flask, request, url_for
+from flask import Flask, request, url_for, session, redirect
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
@@ -17,7 +17,7 @@ def login():
     return redirect(auth_url)
 
 @app.route('/redirect')
-def redirect():
+def redirectPage():
     return "redirect"
 
 @app.route('/get-tracks')
@@ -28,6 +28,6 @@ def create_spotify_oauth():
     return SpotifyOAuth(
         client_id=os.environ["CLIENT_ID"],
         client_secret=os.environ["CLIENT_SECRET"],
-        redirect_uri=url_for('redirect', _external=True),
+        redirect_uri=url_for('redirectPage', _external=True),
         scope="user-library-read"
     )
