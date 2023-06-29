@@ -36,6 +36,9 @@ def getTracks():
         redirect(url_for("login", _external=False))
 
     sp = spotipy.Spotify(auth=token_info['access_token'])
+    tracks = sp.current_user_saved_tracks(limit=50, offset=0)
+    for i in range(0, 50):
+        print(tracks['items'][i]['track']['name'], tracks['items'][i]['track']['artists'][0]['name'])
     return sp.current_user_saved_tracks(limit=50, offset=0)
 
 def get_token():
