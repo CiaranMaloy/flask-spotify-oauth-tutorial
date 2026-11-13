@@ -8,7 +8,7 @@ import time
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = "80hruivnghreuiwofl085"
+app.secret_key = os.environ["FLASK_SECRET_KEY"]
 app.config["SESSION_COOKIE_NAME"] = "Ciaran's Cookie"
 TOKEN_INFO = "token_info"
 

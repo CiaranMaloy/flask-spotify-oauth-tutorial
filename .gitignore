@@ -70,3 +70,7 @@ node_modules
 
 # and this one
 __pycache__
+
+# Secrets / spotipy token cache
+.cache
+notes.txt
